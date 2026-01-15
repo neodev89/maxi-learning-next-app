@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const formSignInstance = z.object({
+export const formSkillsInstance = z.object({
     nameSkill: z.string(),
     nameCompany: z.string(),
     dateStart: z.iso.date(),
@@ -8,4 +8,4 @@ export const formSignInstance = z.object({
     descriptionSkill: z.string(),
 });
 
-export type formSignTypes = z.infer<typeof formSignInstance>;
+export type formSkillsType = z.infer<typeof formSkillsInstance>;

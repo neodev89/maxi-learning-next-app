@@ -1,14 +1,26 @@
 import { Box, SxProps, TextField, TextFieldProps, Theme, Typography } from "@mui/material";
+import { blue } from "@mui/material/colors";
 import { ReactNode } from "react";
-import { Controller, FieldValues } from 'react-hook-form';
+import { Control, Controller, FieldValues, RegisterOptions } from 'react-hook-form';
 
 type inputsProps = TextFieldProps & FieldValues & {
     key: number | string;
-    icon: ReactNode;
+    icon: ReactNode | undefined;
+    control: Control<any>;
+    name: string;
+    rules?: RegisterOptions;
     sx1?: SxProps<Theme>;
 }
 
-export default function Inputs({ key, icon, sx1, ...other }: inputsProps) {
+export default function CustomInputs({ 
+    key, 
+    icon, 
+    sx1, 
+    control, 
+    name, 
+    rules, 
+    ...other 
+}: inputsProps) {
     return (
         <Box sx={{
             position: 'relative',
@@ -20,9 +32,9 @@ export default function Inputs({ key, icon, sx1, ...other }: inputsProps) {
             borderRadius: 4,
         }}>
             <Controller
-                control={other.control}
-                name={other.name!}
-                rules={other.rules}
+                control={control}
+                name={name!}
+                rules={rules}
                 render={({ field, fieldState }) => (
                     <TextField
                         sx={{
@@ -54,7 +66,12 @@ export default function Inputs({ key, icon, sx1, ...other }: inputsProps) {
                         placeholder={other.placeholder}
                         slotProps={{
                             inputLabel: {
-                                shrink: other.type === "date" ? true : undefined
+                                shrink: true,
+                                sx: {
+                                    color: blue[700],
+                                    fontWeight: 500,
+                                    top: '7px',
+                                }
                             }
                         }}
                     />

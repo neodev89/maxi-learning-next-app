@@ -11,7 +11,7 @@ export default function Login() {
                     <Link href={'/'} className={style.buttons}>Indietro</Link>
                 </div>
                 <div className={style.content}>
-                    <PageLogin isLogin={'sign-in'} />
+                    <PageLogin />
                 </div>
             </div>
         </GlobalWrapper>
