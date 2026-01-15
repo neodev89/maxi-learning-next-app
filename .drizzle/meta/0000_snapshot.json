@@ -1,0 +1,68 @@
+{
+  "id": "b653702c-df95-4586-ae3c-9d95ab9da645",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.database-skills": {
+      "name": "database-skills",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name-skill": {
+          "name": "name-skill",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name-company": {
+          "name": "name-company",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date-start": {
+          "name": "date-start",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date-end": {
+          "name": "date-end",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description-skill": {
+          "name": "description-skill",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

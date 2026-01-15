@@ -1,0 +1,45 @@
+@use '../../styles/mixin' as mix
+
+.login
+    @include mix.display-relative
+    height: 100%
+    width: 100%
+    flex-direction: column
+    justify-content: space-evenly
+    padding: 1rem
+
+.navigate
+    @include mix.display-relative
+    align-items: center
+    height: 5rem
+    width: 100%
+    border: 1px solid rgba(255, 0, 0, 0.3)
+    border-radius: 8px
+
+.content
+    @include mix.display-relative
+    height: 70%
+    width: 100%
+    border-radius: 8px
+
+.buttons
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 40px
+    width: 120px
+    border-radius: 8px
+    padding: 4px
+    background: transparent
+    background-clip: padding-box
+    &::before
+        @include mix.gradient-border(40deg, rgba(255, 0, 0, 0.5), rgba(0, 68, 255, 0.5), 40%, rgba(255, 0, 0, 0.5), 90%, 2px)
+    &::after
+        content: "←"
+        position: absolute
+        transform: translateX(40px)
+        z-index: 2
+        color: white
+
+    

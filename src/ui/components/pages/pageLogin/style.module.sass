@@ -1,0 +1,11 @@
+@use '../../../../styles/mixin' as mix
+    
+.pageLogin
+    @include mix.display-relative
+    height: 100%
+    width: 100%
+    padding: 4px
+    border-radius: 8px
+    &::before
+        @include mix.gradient-background(90deg, rgba(255, 255, 255, 0.6), rgba(125, 125, 125, 0.5), 35%, rgba(75, 75, 75, 0.3), 100%)
+    
