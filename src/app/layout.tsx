@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { WrapperQueryClientProvider } from "@/queryClientProvider/queryClientProvider";
 
 
 export const metadata: Metadata = {
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <WrapperQueryClientProvider>
+          {children}
+        </WrapperQueryClientProvider>
       </body>
     </html>
   );

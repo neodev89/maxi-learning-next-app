@@ -1,0 +1,104 @@
+[
+    {
+        "technologies": [
+            {
+                "id": "html",
+                "name": "HTML",
+                "description": "L'HyperText Markup Language è il linguaggio di marcatura standard utilizzato per definire la struttura semantica dei documenti web, basato su un modello ad albero DOM e interpretato dai browser per generare contenuti visuali."
+            },
+            {
+                "id": "css",
+                "name": "CSS",
+                "description": "Il Cascading Style Sheets è un linguaggio dichiarativo per la definizione della presentazione dei documenti HTML, basato su un modello a cascata, ereditarietà e specificità per determinare il rendering finale degli elementi."
+            },
+            {
+                "id": "sass",
+                "name": "SASS",
+                "description": "Syntactically Awesome Style Sheets è un preprocessore CSS che introduce variabili, funzioni, mixin e annidamento, compilando in CSS ottimizzato per migliorare la manutenibilità e la modularità dei fogli di stile."
+            },
+            {
+                "id": "javascript",
+                "name": "JAVASCRIPT",
+                "description": "JavaScript è un linguaggio di programmazione dinamico, basato sul paradigma event-driven e sul modello di esecuzione single-threaded con event loop, utilizzato per manipolare il DOM, gestire logiche applicative e comunicare con servizi remoti."
+            },
+            {
+                "id": "typescript",
+                "name": "TYPESCRIPT",
+                "description": "TypeScript è un superset tipizzato di JavaScript che introduce un sistema di tipi statici, inferenza avanzata e strumenti di sviluppo migliorati, compilando in JavaScript standard per garantire robustezza e scalabilità del codice."
+            },
+            {
+                "id": "react",
+                "name": "REACT.JS",
+                "description": "React è una libreria JavaScript basata su componenti dichiarativi e sul Virtual DOM, progettata per costruire interfacce utente efficienti tramite un modello di rendering reattivo e unidirezionale."
+            },
+            {
+                "id": "nextjs",
+                "name": "NEXT.JS",
+                "description": "Next.js è un framework React full-stack che integra rendering ibrido (SSR, SSG, ISR), routing file-based, API routes e ottimizzazioni automatiche, fornendo un ambiente completo per applicazioni web moderne e scalabili."
+            },
+            {
+                "id": "tanstack-query",
+                "name": "TANSTACK QUERY",
+                "description": "TanStack Query è una libreria per la gestione asincrona dello stato server, basata su caching intelligente, sincronizzazione automatica, invalidazione selettiva e strategie di refetch ottimizzate."
+            },
+            {
+                "id": "axios",
+                "name": "AXIOS",
+                "description": "Axios è un client HTTP basato su Promises che fornisce un'interfaccia astratta per richieste REST, gestione degli interceptor, trasformazione dei dati e supporto nativo per cancellazione e timeout."
+            },
+            {
+                "id": "react-hook-form",
+                "name": "REACT HOOK FORM",
+                "description": "React Hook Form è una libreria per la gestione dei form basata su uncontrolled components e registrazione dinamica dei campi, ottimizzata per performance elevate e validazione modulare."
+            },
+            {
+                "id": "zod",
+                "name": "ZOD",
+                "description": "Zod è una libreria di validazione runtime e definizione di schemi tipizzati, basata su un sistema dichiarativo che genera automaticamente tipi TypeScript coerenti con le regole di validazione."
+            },
+            {
+                "id": "material-ui",
+                "name": "MATERIAL UI",
+                "description": "Material UI è una libreria di componenti React basata sulle specifiche Material Design, che fornisce componenti accessibili, tematizzabili e altamente personalizzabili per interfacce moderne."
+            },
+            {
+                "id": "supabase",
+                "name": "SUPABASE",
+                "description": "Supabase è una piattaforma backend-as-a-service basata su PostgreSQL che integra autenticazione, storage, real-time e API generate automaticamente tramite PostgREST."
+            },
+            {
+                "id": "drizzle",
+                "name": "DRIZZLE",
+                "description": "Drizzle ORM è un ORM TypeScript-first che fornisce tipizzazione statica completa, migrazioni sicure e query SQL dichiarative, garantendo coerenza tra schema e codice applicativo."
+            },
+            {
+                "id": "bcrypt",
+                "name": "BCRYPT",
+                "description": "bcrypt è un algoritmo di hashing adattivo progettato per la protezione delle password, basato su salting automatico e costante regolabile per resistere ad attacchi brute-force."
+            },
+            {
+                "id": "json-web-token",
+                "name": "JSON WEB TOKEN",
+                "description": "JSON Web Token è uno standard aperto (RFC 7519) per la rappresentazione sicura di claims tramite token firmati, utilizzati per autenticazione stateless e scambio di informazioni verificabili."
+            }
+        ]
+    },
+    {
+        "IDE": [
+            {
+                "id": "visual-studio-code",
+                "name": "VISUAL STUDIO CODE",
+                "description": "Visual Studio Code è un editor di codice sorgente leggero e modulare, basato su Electron, che offre estensioni, debugging integrato, terminale incorporato e supporto avanzato per TypeScript e JavaScript."
+            }
+        ]
+    },
+    {
+        "versioning": [
+            {
+                "id": "git",
+                "name": "GIT",
+                "description": "Git è un sistema di controllo versione distribuito progettato per tracciare modifiche nel codice sorgente, supportare branching avanzato e consentire collaborazione asincrona tramite repository locali e remoti."
+            }
+        ]
+    }
+]

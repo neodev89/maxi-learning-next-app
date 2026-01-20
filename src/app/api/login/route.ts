@@ -3,29 +3,32 @@ import jwt from 'jsonwebtoken';
 
 import { db } from "@/db";
 import { formSignInInstance, validationUsersToDB } from "@/zod/formSignIn";
-import { NextRequest, NextResponse } from "next/server";
 import { cookies } from 'next/headers';
 
 const signToken = process.env.SIGNATURE_TOKEN!;
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
     try {
-        const dati = await req.json();
+        const body = await req.json();
+        console.log("Il body è: ", body);
 
         // 1. Validazione input
-        const parsed = formSignInInstance.parse(dati);
+        const parsed = formSignInInstance.parse(body);
+        console.log("Il body parsato è: ", parsed);
 
         // 2. Cerca utente nel DB
-        const user = await db.query.loginApp.findFirst({
+        const user = await db.query.registerApp.findFirst({
             where: (table, { eq }) => eq(table.email, parsed.email),
         });
 
+        console.log("l'user trovato è: ", user);
         // 3. Risposta se utente non trovato
         if (!user) {
-            return NextResponse.json({
+            return Response.json({
                 success: false,
-                message: 'Credenziali non valide',
-            }, { status: 401 });
+                message: 'Utente non registrato',
+                status: 404,
+            }, { status: 404 });
         }
 
         // 4. Verifica password
@@ -35,23 +38,24 @@ export async function POST(req: NextRequest) {
         );
 
         if (!passwordCorretta) {
-            return NextResponse.json({
+            return Response.json({
                 success: false,
                 message: 'Credenziali non valide',
+                status: 401,
             }, { status: 401 });
         }
+
+        // 6. Rimuovi password
+        const { password, ...publicUser } = user;
 
         // 5. Validazione output DB
         const safeUser = validationUsersToDB.parse(user);
 
-        // 6. Rimuovi password
-        const { password, ...publicUser } = safeUser;
-
         // 7. Genera JWT
         const payload = {
-            id: publicUser.id,
-            email: publicUser.email,
-            role: publicUser.role,
+            id: safeUser.id,
+            email: safeUser.email,
+            role: safeUser.role,
         };
 
         const token = jwt.sign(payload, signToken, {
@@ -59,8 +63,8 @@ export async function POST(req: NextRequest) {
         });
 
         // 8. Imposta cookie HttpOnly
-        const cookiesStore = await cookies();
-        cookiesStore.set('auth_token', token, {
+        const cookieStore = await cookies();
+        cookieStore.set('auth_token', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
@@ -69,7 +73,7 @@ export async function POST(req: NextRequest) {
         });
 
         // 9. Risposta finale
-        return NextResponse.json({
+        return Response.json({
             success: true,
             user: publicUser,
             token,
@@ -77,7 +81,7 @@ export async function POST(req: NextRequest) {
 
     } catch (error) {
         console.error("Errore nel login:", error);
-        return NextResponse.json({
+        return Response.json({
             success: false,
             message: "Errore interno del server",
         }, { status: 500 });

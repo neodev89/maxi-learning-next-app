@@ -3,26 +3,16 @@
 import styles from './style.module.sass';
 import CustomInputs from '../../inputs/custom-inputs';
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Stack } from "@mui/material";
-import { useForm } from 'react-hook-form';
-import { formSignInInstance, formSignInType } from '@/zod/formSignIn';
-import { useLoginMutation } from '@/tanstack-query/mutations/func-mutation/mutation-post';
+import { loginProps } from '@/@types/formTypes';
 
-export default function PageLogin() {
-    const login = useLoginMutation();
+export default function PageLogin<T extends Record<string, any>>({
+    control,
+    setValue,
+    handleSubmit,
+    handleSubmitForm
+}: loginProps<T>) {
     
-    const { control, handleSubmit, setValue, watch } = useForm<formSignInType>({
-        resolver: zodResolver(formSignInInstance),
-    });
-
-    const handleSubmitForm = async () => {
-        console.log("Ok");
-        const body = watch();
-        login.mutate(body);
-    };
-
-
     return (
         <Box
             component={'form'}
@@ -30,15 +20,15 @@ export default function PageLogin() {
         >
             <Stack spacing={2}>
                 <CustomInputs
-                    key={'email'}
+                    type={'email'}
                     icon={undefined}
                     control={control}
                     name={'email'}
                     label={'email'}
                     setValue={setValue}
-                    />
+                />
                 <CustomInputs
-                    key={'password'}
+                    type={'password'}
                     icon={undefined}
                     control={control}
                     name={'password'}

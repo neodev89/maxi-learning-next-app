@@ -10,9 +10,8 @@ export const formSignInInstance = z.object({
 export const validationUsersToDB = z.object({
     id: z.uuid().nonempty(),
     email: emailUserSchema,
-    password: passwordUserSchema,
-    createdAt: z.iso.datetime(),
-    updatedAt: z.iso.datetime(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
     emailVerified: z.boolean().nullable(),
     role: z.enum(['admin', 'user']),
 });

@@ -1,13 +1,15 @@
+'use client'
+
 import { Box, SxProps, TextField, TextFieldProps, Theme, Typography } from "@mui/material";
 import { blue } from "@mui/material/colors";
 import { ReactNode } from "react";
 import { Control, Controller, FieldValues, RegisterOptions } from 'react-hook-form';
 
 type inputsProps = TextFieldProps & FieldValues & {
-    key: number | string;
-    icon: ReactNode | undefined;
     control: Control<any>;
     name: string;
+    icon?: ReactNode;
+    key?: number | string;
     rules?: RegisterOptions;
     sx1?: SxProps<Theme>;
 }

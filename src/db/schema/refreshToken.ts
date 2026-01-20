@@ -5,9 +5,12 @@ export const refreshToken = pgTable("refresh_token", {
     id: uuid('id')
         .primaryKey()
         .notNull(),
-    userId: uuid('userId').notNull().references(() => loginApp.id, { onDelete: "cascade" }),
+    userId: uuid('userId').notNull(),
     tokenHash: text().notNull(),
-    expiresAt: timestamp('expiresAt').defaultNow().notNull(),
-    createdAt: timestamp('createdAt').defaultNow().notNull(),
+    expiresAt: text().notNull(),
+    createdAt: text().notNull(),
     userAgent: text('userAgent'),
+    idLogin: uuid('idLogin').notNull().references(
+        () => loginApp.id, { onDelete: "cascade" }
+    ),
 });
