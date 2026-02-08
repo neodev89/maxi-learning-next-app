@@ -1,14 +1,13 @@
-"use client";
-
 import GlobalWrapper from "@/ui/components/global-wrapper/GlobalWrapper";
-import { Box } from "@mui/material";
+import PageTech from "@/ui/components/pages/pageTech/pageTech";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+
     return (
-        <GlobalWrapper>
-            <Box>
-                
-            </Box>
-        </GlobalWrapper>
-    )
+        <div>
+            <GlobalWrapper>
+                <PageTech />
+            </GlobalWrapper>
+        </div>
+    );
 }

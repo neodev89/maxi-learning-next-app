@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         // 1. Input validation
         const parsed = formSignInInstance.parse(body);
 
-        const justRegistered = await db.query.loginApp.findFirst({
+        const justRegistered = await db.query.registerApp.findFirst({
             where: (table, { eq }) => eq(table.email, parsed.email)
         });
 

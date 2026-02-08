@@ -3,13 +3,19 @@ import { Pool } from "pg";
 import { registerApp } from "./schema/registerApp";
 import { refreshToken } from "./schema/refreshToken";
 import { skills } from "./schema/skills";
-import { loginApp } from "./schema/loginApp";
+import { myProjects } from "./schema/myProjects";
+import { technologiesList } from "./schema/technologiesList";
+import { IDEList } from "./schema/ideList";
+import { versioningList } from "./schema/versioningList";
 
 const schema = {
     registerApp,
-    loginApp,
     refreshToken,
     skills,
+    myProjects,
+    technologiesList,
+    IDEList,
+    versioningList,
 }
 
 const pool = new Pool({

@@ -1,5 +1,6 @@
 import { pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
-import { loginApp } from "./loginApp";
+import { registerApp } from "./registerApp";
+
 
 export const refreshToken = pgTable("refresh_token", {
     id: uuid('id')
@@ -11,6 +12,6 @@ export const refreshToken = pgTable("refresh_token", {
     createdAt: text().notNull(),
     userAgent: text('userAgent'),
     idLogin: uuid('idLogin').notNull().references(
-        () => loginApp.id, { onDelete: "cascade" }
+        () => registerApp.id, { onDelete: "cascade" }
     ),
 });

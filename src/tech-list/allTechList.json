@@ -42,11 +42,6 @@
                 "description": "TanStack Query è una libreria per la gestione asincrona dello stato server, basata su caching intelligente, sincronizzazione automatica, invalidazione selettiva e strategie di refetch ottimizzate."
             },
             {
-                "id": "redux-toolkit",
-                "name": "REDUX TOOLKIT",
-                "description": "Redux toolkit è una libreria per gestire la storicizzazione globale dei dati"
-            },
-            {
                 "id": "axios",
                 "name": "AXIOS",
                 "description": "Axios è un client HTTP basato su Promises che fornisce un'interfaccia astratta per richieste REST, gestione degli interceptor, trasformazione dei dati e supporto nativo per cancellazione e timeout."
@@ -85,6 +80,46 @@
                 "id": "json-web-token",
                 "name": "JSON WEB TOKEN",
                 "description": "JSON Web Token è uno standard aperto (RFC 7519) per la rappresentazione sicura di claims tramite token firmati, utilizzati per autenticazione stateless e scambio di informazioni verificabili."
+            },
+            {
+                "id": "nodejs",
+                "name": "NODE.JS",
+                "description": "Node.js è un runtime JavaScript basato sul motore V8 di Chrome, progettato per eseguire codice lato server tramite un modello event-driven e non-blocking, ideale per applicazioni scalabili e ad alta concorrenza."
+            },
+            {
+                "id": "express",
+                "name": "EXPRESS.JS",
+                "description": "Express è un framework minimalista per Node.js che fornisce routing, middleware e strumenti per costruire API RESTful e applicazioni server-side modulari e scalabili."
+            },
+            {
+                "id": "vite",
+                "name": "VITE",
+                "description": "Vite è un bundler e dev server basato su ES Modules e compilazione on-demand, progettato per offrire tempi di avvio istantanei e build estremamente ottimizzate."
+            },
+            {
+                "id": "tailwindcss",
+                "name": "TAILWIND CSS",
+                "description": "Tailwind CSS è un framework utility-first che fornisce classi atomiche per costruire interfacce altamente personalizzabili senza scrivere CSS personalizzato."
+            },
+            {
+                "id": "docker",
+                "name": "DOCKER",
+                "description": "Docker è una piattaforma di containerizzazione che consente di isolare applicazioni e dipendenze in ambienti portabili, riproducibili e ottimizzati per il deployment."
+            },
+            {
+                "id": "postgresql",
+                "name": "POSTGRESQL",
+                "description": "PostgreSQL è un database relazionale open-source avanzato, basato su ACID, estensibilità tramite funzioni custom e supporto nativo a JSONB, indexing avanzato e transazioni complesse."
+            },
+            {
+                "id": "mysql",
+                "name": "MYSQL",
+                "description": "MySQL è un database relazionale ad alte prestazioni, ampiamente utilizzato per applicazioni web grazie alla sua stabilità, velocità e compatibilità con numerosi ORM e framework."
+            },
+            {
+                "id": "redis",
+                "name": "REDIS",
+                "description": "Redis è un data store in-memory ad alte prestazioni, utilizzato per caching, sessioni, code di messaggi e operazioni a bassa latenza."
             }
         ]
     },
@@ -94,6 +129,16 @@
                 "id": "visual-studio-code",
                 "name": "VISUAL STUDIO CODE",
                 "description": "Visual Studio Code è un editor di codice sorgente leggero e modulare, basato su Electron, che offre estensioni, debugging integrato, terminale incorporato e supporto avanzato per TypeScript e JavaScript."
+            },
+            {
+                "id": "webstorm",
+                "name": "WEBSTORM",
+                "description": "WebStorm è un IDE avanzato di JetBrains ottimizzato per JavaScript, TypeScript e framework moderni, con refactoring intelligente, debugging integrato e strumenti di analisi del codice."
+            },
+            {
+                "id": "intellij-idea",
+                "name": "INTELLIJ IDEA",
+                "description": "IntelliJ IDEA è un IDE professionale orientato allo sviluppo full-stack, con supporto avanzato per Java, Kotlin, TypeScript e strumenti integrati per database, versioning e testing."
             }
         ]
     },
@@ -103,6 +148,21 @@
                 "id": "git",
                 "name": "GIT",
                 "description": "Git è un sistema di controllo versione distribuito progettato per tracciare modifiche nel codice sorgente, supportare branching avanzato e consentire collaborazione asincrona tramite repository locali e remoti."
+            },
+            {
+                "id": "github",
+                "name": "GITHUB",
+                "description": "GitHub è una piattaforma di hosting Git che integra strumenti di collaborazione, CI/CD, gestione delle issue e automazioni tramite GitHub Actions."
+            },
+            {
+                "id": "gitlab",
+                "name": "GITLAB",
+                "description": "GitLab è una piattaforma DevOps completa che integra repository Git, pipeline CI/CD, gestione dei progetti e strumenti di sicurezza in un unico ambiente."
+            },
+            {
+                "id": "bitbucket",
+                "name": "BITBUCKET",
+                "description": "Bitbucket è un servizio di hosting Git orientato ai team, con integrazione nativa con Jira, pipeline CI/CD e strumenti di code review avanzati."
             }
         ]
     }

@@ -1,0 +1,36 @@
+@use '../../../../styles/mixin' as mix
+@use '../../../../styles/variables' as var
+@use '../../../../styles/mapping' as mapped
+@use 'sass:map'
+
+.pageTech
+    @include mix.display-relative
+    
+    height: 100%
+    width: 100%
+
+    &::before
+        @include mix.gradient-border(40deg, rgba(255, 0, 0, 0.5), rgba(0, 68, 255, 0.5), 40%, rgba(255, 0, 0, 0.5), 90%, 2px)
+
+.formPageTech
+    @include mix.display-relative
+
+    justify-content: center
+    align-items: center
+    height: 100%
+    width: 100%    
+
+.typographyGrid
+    @include mix.display-relative
+    
+    justify-content: center    
+    border: 1px solid map.get(mapped.$mapped-colors, 'red') 
+
+.table
+    @include mix.display-relative
+
+    overflow-y: auto
+    overflow-x: hidden
+    height: auto
+    min-height: 90%
+    width: 100%   
