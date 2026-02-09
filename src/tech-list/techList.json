@@ -44,7 +44,12 @@
             {
                 "id": "redux-toolkit",
                 "name": "REDUX TOOLKIT",
-                "description": "Redux toolkit è una libreria per gestire la storicizzazione globale dei dati"
+                "description": "Redux Toolkit è una libreria che semplifica la gestione dello stato globale, riducendo la boilerplate e fornendo strumenti moderni per Redux"
+            },
+            {
+                "id": "redux-persist",
+                "name": "REDUX PERSIST",
+                "description": "Redux Persist è una libreria che permette di salvare e ripristinare automaticamente lo stato globale su storage persistente come localStorage"
             },
             {
                 "id": "axios",

@@ -6,6 +6,7 @@ import { formSignInInstance, validationUsersToDB } from "@/zod/formSignIn";
 import { cookies } from 'next/headers';
 
 const signToken = process.env.SIGNATURE_TOKEN!;
+const tokenKey = process.env.TOKEN_KEY!;
 
 export async function POST(req: Request) {
     try {
@@ -64,7 +65,7 @@ export async function POST(req: Request) {
 
         // 8. Imposta cookie HttpOnly
         const cookieStore = await cookies();
-        cookieStore.set('auth_token', token, {
+        cookieStore.set(tokenKey, token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',

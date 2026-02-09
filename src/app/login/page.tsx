@@ -38,7 +38,7 @@ export default function Login() {
     return (
         <GlobalWrapper>
             {
-                login.isPending ? (
+                (login.isPending || login.status === 'success') ? (
                     <>
                         <CircularProgress size={50} />
                     </>

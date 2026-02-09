@@ -42,6 +42,16 @@
                 "description": "TanStack Query è una libreria per la gestione asincrona dello stato server, basata su caching intelligente, sincronizzazione automatica, invalidazione selettiva e strategie di refetch ottimizzate."
             },
             {
+                "id": "redux-toolkit",
+                "name": "REDUX TOOLKIT",
+                "description": "Redux Toolkit è una libreria che semplifica la gestione dello stato globale, riducendo la boilerplate e fornendo strumenti moderni per Redux"
+            },
+            {
+                "id": "redux-persist",
+                "name": "REDUX PERSIST",
+                "description": "Redux Persist è una libreria che permette di salvare e ripristinare automaticamente lo stato globale su storage persistente come localStorage"
+            },
+            {
                 "id": "axios",
                 "name": "AXIOS",
                 "description": "Axios è un client HTTP basato su Promises che fornisce un'interfaccia astratta per richieste REST, gestione degli interceptor, trasformazione dei dati e supporto nativo per cancellazione e timeout."
@@ -110,6 +120,11 @@
                 "id": "postgresql",
                 "name": "POSTGRESQL",
                 "description": "PostgreSQL è un database relazionale open-source avanzato, basato su ACID, estensibilità tramite funzioni custom e supporto nativo a JSONB, indexing avanzato e transazioni complesse."
+            },
+            {
+                "id": "supabase",
+                "name": "SUPABASE",
+                "description": "Supabase è una piattaforma open-source che fornisce un backend completo basato su PostgreSQL, con autenticazione, storage, API generate automaticamente e un client JavaScript moderno per interagire con il database in tempo reale."
             },
             {
                 "id": "mysql",

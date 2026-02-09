@@ -1,7 +1,9 @@
+"use client"
+
 import GlobalWrapper from "@/ui/components/global-wrapper/GlobalWrapper";
 import PageTech from "@/ui/components/pages/pageTech/pageTech";
 
-export default async function Dashboard() {
+export default function Dashboard() {
 
     return (
         <div>
