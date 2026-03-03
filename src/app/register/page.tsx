@@ -22,7 +22,7 @@ export default function Register() {
     const handleSubmitForm = async () => {
         try {
             register.mutate({
-                url: "/api/register",
+                url: "/register",
                 body: watch(),
                 pathSuccess: "/dashboard",
                 pathErrorCredential: "/login",

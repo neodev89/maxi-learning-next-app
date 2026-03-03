@@ -4,7 +4,12 @@
     inset: 0
     border-radius: inherit
     padding: $thickness
-    background: linear-gradient( $angle, $c1 0%, $c2 $stop2, $c3 $stop3)
+    background: linear-gradient(
+        $angle, 
+        $c1 0%, 
+        $c2 $stop2, 
+        $c3 $stop3
+    )
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
     -webkit-mask-composite: xor
     mask-composite: exclude

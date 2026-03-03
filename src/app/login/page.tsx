@@ -14,15 +14,15 @@ import { CircularProgress } from '@mui/material';
 export default function Login() {
     const login = useCustomMutation<formSignInType>(["post-login"]);
 
-    const { control, handleSubmit, setValue, watch } = useForm<formSignInType>({
+    const { control, handleSubmit, setValue } = useForm<formSignInType>({
         resolver: zodResolver(formSignInInstance),
     });
 
-    const handleSubmitForm = async () => {
+    const handleSubmitForm = async (data: formSignInType) => {
         try {
             login.mutate({
-                url: "/api/login",
-                body: watch(),
+                url: "/login",
+                body: data,
                 pathSuccess: "/dashboard",
                 pathErrorCredential: "/login",
                 pathError: '/',
@@ -53,12 +53,12 @@ export default function Login() {
                                     control={control}
                                     setValue={setValue}
                                     handleSubmit={handleSubmit}
-                                    handleSubmitForm={handleSubmitForm}
+                                    handleSubmitForm={handleSubmit(handleSubmitForm)}
                                 />
                             </div>
                         </div>
                     </>
-                )
+                ) 
             }
         </GlobalWrapper >
     )

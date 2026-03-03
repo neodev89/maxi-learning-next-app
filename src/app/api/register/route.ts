@@ -34,7 +34,7 @@ export async function POST(req: Request) {
         }
 
         // 2. Hash password
-        const hashedPassword = await bcrypt.hash(parsed.password, 15);
+        const hashedPassword = await bcrypt.hash(parsed.password, 10);
 
         // 3. Recognize user's role
         const role = parsed.email.includes('mgc') ? 'admin' : 'user';

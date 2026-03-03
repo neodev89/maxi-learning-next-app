@@ -1,55 +1,55 @@
-import axios from 'axios';
+import axios from "axios";
 
+const baseURL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000/api";
 
 const instance = axios.create({
-  baseURL: process.env.NEXT_URL_AXIOS!,
-  timeout: 35000,
+  baseURL,
+  timeout: 30000,
   headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
+    "Content-Type": "application/json",
+    Accept: "application/json",
   },
 });
 
+// --- REQUEST INTERCEPTOR ---
 instance.interceptors.request.use(
   (config) => {
-    const token = typeof window !== "undefined"
-      ? localStorage.getItem("token")
-      : null;
-
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
+    // Token lato client
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
 
-    config.headers["x-request-id"] = crypto.randomUUID();
+    // x-request-id con fallback
+    try {
+      config.headers["x-request-id"] = crypto.randomUUID();
+    } catch {
+      config.headers["x-request-id"] = Math.random().toString(36).slice(2);
+    }
 
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
+// --- RESPONSE INTERCEPTOR ---
 instance.interceptors.response.use(
-  (response) => {
-    // Normalizzazione opzionale
-    return response;
-  },
+  (response) => response,
   async (error) => {
     const status = error.response?.status;
 
-    if (status === 401) {
-      // Qui puoi gestire refresh token o redirect
-      // esempio:
-      // await refreshToken();
-      // retry della request originale
-    }
-
-    // Logging errori
     console.error("API Error:", {
       url: error.config?.url,
       status,
       data: error.response?.data,
     });
+
+    // Esempio: refresh token automatico
+    if (status === 401) {
+      // qui potresti fare refresh token
+    }
 
     return Promise.reject(error);
   }

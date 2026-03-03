@@ -23,23 +23,26 @@ export async function GET() {
 
         if (!parsed) {
             console.error("Non ci sono dati");
-            return Response.json({
+            const res: APIResponse<null> = {
                 success: false,
                 data: null,
                 message: "il file è vuoto",
                 status: 404,
-            }, {
-                status: 404,
-            });
+            };
+            return Response.json(
+                res,
+                { status: 404 }
+            );
         }
-
-        return Response.json({
+        const res: APIResponse<TechListTypes> = {
             success: true,
             data: parsed,
             status: 200,
-        }, {
-            status: 200,
-        });
+        };
+        return Response.json(
+            res,
+            { status: 200 }
+        );
     } catch (error: any) {
         console.error(error);
         return Response.json(error);
@@ -47,58 +50,85 @@ export async function GET() {
 };
 
 export async function POST(req: Request) {
-    const tableDb = [
-        {
-            table: technologiesList,
-            name: 'technologies_list',
-        },
-        {
-            table: IDEList,
-            name: 'ide_list',
-        },
-        {
-            table: versioningList,
-            name: 'versioning_list',
+    try {
+        const tableDb = {
+            technologies_list: {
+                table: technologiesList,
+                dataKey: "technologies"
+            },
+            ide_list: {
+                table: IDEList,
+                dataKey: "IDE"
+            },
+            versioning_list: {
+                table: versioningList,
+                dataKey: "versioning"
+            }
+        } as const;
+
+
+        const request = await req.json();
+        const body = await saveChoiceSchema.safeParseAsync(request);
+
+        if (!body.success) {
+            const res: APIResponse<null> = {
+                success: false,
+                data: null,
+                message: "Il body non rispetta la forma decisa",
+                status: 400,
+            };
+            return Response.json(res, { status: 400 });
         }
-    ];
-    const request = await req.json();
-    const body = await saveChoiceSchema.safeParseAsync(request);
 
-    if (!body.success) {
-        const res: APIResponse<null> = {
+        const foundTable = tableDb[body.data.table];
+        if (!foundTable) {
+            const res: APIResponse<null> = {
+                success: false,
+                data: null,
+                message: "La tabella non combacia con quella inviata dal client",
+                status: 404,
+            };
+            return Response.json(res, { status: 404 });
+        }
+
+        let rowsToInsert;
+        switch (body.data.table) {
+            case "technologies_list":
+                rowsToInsert = body.data.data.technologies;
+                break;
+            case "ide_list":
+                rowsToInsert = body.data.data.IDE;
+                break;
+            case "versioning_list":
+                rowsToInsert = body.data.data.versioning;
+                break;
+        }
+
+        if (!rowsToInsert) {
+            const res: APIResponse<null> = {
+                success: false,
+                data: null,
+                message: "I dati non sono coerenti con la tabella",
+                status: 400,
+            };
+            return Response.json(
+                res,
+                { status: 400 }
+            );
+        }
+
+        await db.insert(foundTable.table).values(rowsToInsert);
+    } catch (err: any) {
+        console.error("Errore API:", err);
+        const res: APIResponse<any> = {
             success: false,
-            data: null,
-            message: "Il body non rispetta la forma decisa",
-            status: 400,
+            data: err,
+            message: "Errore interno del server",
+            status: 500,
         };
-        return Response.json(res, { status: 400 });
+        return Response.json(
+            res,
+            { status: 500 }
+        );
     }
-
-    const foundedTable = tableDb.find(el => el.name === body.data.table);
-    if (!foundedTable) {
-        const res: APIResponse<null> = {
-            success: false,
-            data: null,
-            message: 'La tabella non è stata trovata',
-            status: 400
-        };
-        return Response.json(res, { status: 400 });
-    }
-
-    // 🔥 Estrai l’array corretto 
-    let rowsToInsert;
-    switch (body.data.table) {
-        case "technologies_list":
-            rowsToInsert = body.data.data.technologies;
-            break;
-        case "ide_list":
-            rowsToInsert = body.data.data.IDE;
-            break;
-        case "versioning_list":
-            rowsToInsert = body.data.data.versioning
-            break;
-    }
-
-    // 🔥 Ora Drizzle è felice 
-    await db.insert(foundedTable.table).values(rowsToInsert);
 }

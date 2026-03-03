@@ -1,0 +1,170 @@
+⭐ Ti preparo le interfacce corrette per questi casi
+✔️ 1. Organization (layout)
+ts
+export interface OrganizationJsonLd {
+  "@context"?: "https://schema.org";
+  "@type"?: "Organization";
+  name: string;
+  url: string;
+  logo?: string;
+  sameAs?: string[];
+}
+✔️ 2. WebSite (layout)
+ts
+export interface WebSiteJsonLd {
+  "@context"?: "https://schema.org";
+  "@type"?: "WebSite";
+  name: string;
+  url: string;
+  potentialAction?: {
+    "@type": "SearchAction";
+    target: string;
+    "query-input": string;
+  };
+}
+✔️ 3. WebPage (pagina specifica)
+ts
+export interface WebPageJsonLd {
+  "@context"?: "https://schema.org";
+  "@type"?: "WebPage";
+  name: string;
+  description: string;
+  url: string;
+}
+✔️ 4. SoftwareApplication (solo se hai una web app)
+ts
+export interface SoftwareAppJsonLd {
+  "@context"?: "https://schema.org";
+  "@type"?: "SoftwareApplication";
+  name: string;
+  applicationCategory: string;
+  operatingSystem: string;
+  url: string;
+  description: string;
+}
+
+🎯 Perché sembrano sempre uguali?
+    Perché:
+
+    @context è sempre "https://schema.org"
+
+    @type è sempre uno dei tipi Schema.org
+
+    E per un sito vetrina o web app, i tipi sono sempre quelli:
+
+    Caso:	Tipo JSON‑LD
+    Layout generale:	Organization, WebSite
+    Pagina generica:	WebPage
+    Home page:	WebSite + WebPage
+    Web app:	SoftwareApplication
+    Pagina servizi:	WebPage
+    Pagina contatti:	ContactPage (opzionale)
+
+⭐ Funzioni generatrici (come la tua, ma corrette)
+ts
+export function organizationJsonLd(props: OrganizationJsonLd) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    ...props
+  };
+}
+
+export function webSiteJsonLd(props: WebSiteJsonLd) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    ...props
+  };
+}
+
+export function webPageJsonLd(props: WebPageJsonLd) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    ...props
+  };
+}
+
+export function softwareAppJsonLd(props: SoftwareAppJsonLd) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    ...props
+  };
+}
+⭐ Come integrarli nel layout (Organization + WebSite)
+app/layout.tsx
+
+tsx
+import {
+  organizationJsonLd,
+  webSiteJsonLd
+} from "@/lib/seo/jsonld";
+
+export default function RootLayout({ children }) {
+  const org = organizationJsonLd({
+    name: "Mattiagiorgio Web Studio",
+    url: "https://tuosito.it",
+    logo: "https://tuosito.it/logo.png"
+  });
+
+  const site = webSiteJsonLd({
+    name: "Mattiagiorgio Web Studio",
+    url: "https://tuosito.it"
+  });
+
+  return (
+    <html lang="it">
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(org) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(site) }}
+        />
+        {children}
+      </body>
+    </html>
+  );
+}
+⭐ Come integrarli in una pagina (WebPage + SoftwareApplication)
+app/page.tsx (home)
+
+tsx
+import { webPageJsonLd, softwareAppJsonLd } from "@/lib/seo/jsonld";
+
+export default function HomePage() {
+  const page = webPageJsonLd({
+    name: "Home",
+    description: "Web app moderna sviluppata da Mattiagiorgio",
+    url: "https://tuosito.it"
+  });
+
+  const app = softwareAppJsonLd({
+    name: "Mattiagiorgio App",
+    applicationCategory: "WebApplication",
+    operatingSystem: "All",
+    url: "https://tuosito.it",
+    description: "Applicazione web moderna e veloce"
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(page) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(app) }}
+      />
+
+      <main>
+        <h1>Benvenuto nella mia web app</h1>
+      </main>
+    </>
+  );
+}

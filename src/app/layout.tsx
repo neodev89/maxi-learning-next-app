@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 import { WrapperQueryClientProvider } from "@/queryClientProvider/queryClientProvider";
-import CookieBanner from "@/ui/components/cookiesPreference/cookiesPreference";
 
 
 export const metadata: Metadata = {
@@ -19,7 +18,6 @@ export default function RootLayout({
       <body>
         <WrapperQueryClientProvider>
           {children}
-          <CookieBanner />
         </WrapperQueryClientProvider>
       </body>
     </html>

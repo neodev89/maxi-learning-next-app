@@ -72,11 +72,6 @@
                 "description": "Material UI è una libreria di componenti React basata sulle specifiche Material Design, che fornisce componenti accessibili, tematizzabili e altamente personalizzabili per interfacce moderne."
             },
             {
-                "id": "supabase",
-                "name": "SUPABASE",
-                "description": "Supabase è una piattaforma backend-as-a-service basata su PostgreSQL che integra autenticazione, storage, real-time e API generate automaticamente tramite PostgREST."
-            },
-            {
                 "id": "drizzle",
                 "name": "DRIZZLE",
                 "description": "Drizzle ORM è un ORM TypeScript-first che fornisce tipizzazione statica completa, migrazioni sicure e query SQL dichiarative, garantendo coerenza tra schema e codice applicativo."

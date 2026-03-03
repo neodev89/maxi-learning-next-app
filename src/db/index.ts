@@ -7,6 +7,7 @@ import { myProjects } from "./schema/myProjects";
 import { technologiesList } from "./schema/technologiesList";
 import { IDEList } from "./schema/ideList";
 import { versioningList } from "./schema/versioningList";
+import { favoriteTechnologies } from "./schema/favoriteTechnologies";
 
 const schema = {
     registerApp,
@@ -16,6 +17,7 @@ const schema = {
     technologiesList,
     IDEList,
     versioningList,
+    favoriteTechnologies,
 }
 
 const pool = new Pool({

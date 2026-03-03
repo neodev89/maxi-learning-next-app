@@ -5,10 +5,11 @@ import { db } from "@/db";
 import { formSignInInstance, validationUsersToDB } from "@/zod/formSignIn";
 import { cookies } from 'next/headers';
 
-const signToken = process.env.SIGNATURE_TOKEN!;
-const tokenKey = process.env.TOKEN_KEY!;
+
 
 export async function POST(req: Request) {
+    const signToken = process.env.SIGNATURE_TOKEN!;
+    const tokenKey = process.env.TOKEN_KEY!;
     try {
         const body = await req.json();
         console.log("Il body è: ", body);
@@ -22,7 +23,6 @@ export async function POST(req: Request) {
             where: (table, { eq }) => eq(table.email, parsed.email),
         });
 
-        console.log("l'user trovato è: ", user);
         // 3. Risposta se utente non trovato
         if (!user) {
             return Response.json({
@@ -31,12 +31,15 @@ export async function POST(req: Request) {
                 status: 404,
             }, { status: 404 });
         }
+        console.log("l'user trovato è: ", user);
 
+        console.log("Inizio confronto password...");
         // 4. Verifica password
         const passwordCorretta = await bcrypt.compare(
             parsed.password,
             user.password,
         );
+        console.log("Esito confronto:", passwordCorretta);
 
         if (!passwordCorretta) {
             return Response.json({
